@@ -1,0 +1,522 @@
+Index: eureka-client/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- eureka-client/src/main/resources/application.properties	(date 1587297600825)
++++ eureka-client/src/main/resources/application.properties	(date 1587297600825)
+@@ -0,0 +1,7 @@
++#服务名称
++spring.application.name=eureka-client
++# 端口号
++server.port=8180
++#服务注册中心的配置内容，指定服务注册中心的位置
++eureka.client.service-url.default-zone=http://node1/8761/8762/8764/eureka/
++
+Index: .idea/$CACHE_FILE$
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/$CACHE_FILE$	(date 1587111619076)
++++ .idea/$CACHE_FILE$	(date 1587111619076)
+@@ -0,0 +1,47 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectInspectionProfilesVisibleTreeState">
++    <entry key="Project Default">
++      <profile-state>
++        <expanded-state>
++          <State />
++          <State>
++            <id>Android</id>
++          </State>
++          <State>
++            <id>CorrectnessLintAndroid</id>
++          </State>
++          <State>
++            <id>Gradle</id>
++          </State>
++          <State>
++            <id>Kotlin</id>
++          </State>
++          <State>
++            <id>LintAndroid</id>
++          </State>
++          <State>
++            <id>Maven</id>
++          </State>
++          <State>
++            <id>MavenMigrationKotlin</id>
++          </State>
++          <State>
++            <id>MigrationKotlin</id>
++          </State>
++          <State>
++            <id>OSGi</id>
++          </State>
++          <State>
++            <id>Probable bugsGradle</id>
++          </State>
++        </expanded-state>
++        <selected-state>
++          <State>
++            <id>Android</id>
++          </State>
++        </selected-state>
++      </profile-state>
++    </entry>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/$PRODUCT_WORKSPACE_FILE$
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/$PRODUCT_WORKSPACE_FILE$	(date 1587111619078)
++++ .idea/$PRODUCT_WORKSPACE_FILE$	(date 1587111619078)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="masterDetails">
++    <states>
++      <state key="ProjectJDKs.UI">
++        <settings>
++          <last-edited>1.8</last-edited>
++          <splitter-proportions>
++            <option name="proportions">
++              <list>
++                <option value="0.2" />
++              </list>
++            </option>
++          </splitter-proportions>
++        </settings>
++      </state>
++    </states>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(date 1587177095155)
++++ .idea/compiler.xml	(date 1587177095155)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <annotationProcessing>
++      <profile name="Maven default annotation processors profile" enabled="true">
++        <sourceOutputDir name="target/generated-sources/annotations" />
++        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
++        <outputRelativeToContentRoot value="true" />
++        <module name="eureka-client" />
++        <module name="eureka-server" />
++      </profile>
++    </annotationProcessing>
++  </component>
++  <component name="JavacSettings">
++    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
++      <module name="eureka-client" options="-parameters" />
++      <module name="eureka-server" options="-parameters" />
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: eureka-client/src/main/java/com/mengchao/eurekaclient/EurekaClientApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- eureka-client/src/main/java/com/mengchao/eurekaclient/EurekaClientApplication.java	(date 1587177578726)
++++ eureka-client/src/main/java/com/mengchao/eurekaclient/EurekaClientApplication.java	(date 1587177578726)
+@@ -0,0 +1,19 @@
++package com.mengchao.eurekaclient;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
++
++/*
++ * @ClassName EurekaClientApplication
++ * @Author MengChao
++ * @Date 2020/4/18  10:33
++ **/
++@EnableEurekaClient
++@SpringBootApplication
++public class EurekaClientApplication {
++
++    public static void main(String[] args) {
++        SpringApplication.run(EurekaClientApplication.class,args);
++    }
++}
+Index: eureka-server/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- eureka-server/pom.xml	(date 1587112011968)
++++ eureka-server/pom.xml	(date 1587112011968)
+@@ -0,0 +1,22 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <parent>
++        <artifactId>springcloud-demos</artifactId>
++        <groupId>com.mengchao</groupId>
++        <version>1.0-SNAPSHOT</version>
++    </parent>
++    <modelVersion>4.0.0</modelVersion>
++
++    <artifactId>eureka-server</artifactId>
++
++    <dependencies>
++        <dependency>
++            <groupId>org.springframework.cloud</groupId>
++            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
++        </dependency>
++    </dependencies>
++
++
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(date 1587111747768)
++++ .idea/misc.xml	(date 1587111747768)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="JavaScriptSettings">
++    <option name="languageLevel" value="ES6" />
++  </component>
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: eureka-client/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- eureka-client/pom.xml	(date 1587262100156)
++++ eureka-client/pom.xml	(date 1587262100156)
+@@ -0,0 +1,30 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <parent>
++        <artifactId>springcloud-demos</artifactId>
++        <groupId>com.mengchao</groupId>
++        <version>1.0-SNAPSHOT</version>
++    </parent>
++    <modelVersion>4.0.0</modelVersion>
++
++    <artifactId>eureka-client</artifactId>
++
++
++    <dependencies>
++        <dependency>
++            <groupId>org.springframework.cloud</groupId>
++            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
++        </dependency>
++        <dependency>
++            <groupId>org.springframework.boot</groupId>
++            <artifactId>spring-boot-starter-web</artifactId>
++        </dependency>
++        <dependency>
++            <groupId>org.springframework.boot</groupId>
++            <artifactId>spring-boot-starter-actuator</artifactId>
++        </dependency>
++    </dependencies>
++
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/.gitignore	(date 1587298154473)
++++ .idea/.gitignore	(date 1587298154473)
+@@ -0,0 +1,2 @@
++# Default ignored files
++/workspace.xml
+\ No newline at end of file
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .gitignore	(date 1587298155108)
++++ .gitignore	(date 1587298155108)
+@@ -0,0 +1,3 @@
++# Project exclude paths
++/eureka-client/target/
++/eureka-server/target/
+\ No newline at end of file
+Index: .idea/codeStyles/codeStyleConfig.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/codeStyles/codeStyleConfig.xml	(date 1587111620502)
++++ .idea/codeStyles/codeStyleConfig.xml	(date 1587111620502)
+@@ -0,0 +1,5 @@
++<component name="ProjectCodeStyleConfiguration">
++  <state>
++    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
++  </state>
++</component>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1587298386078)
++++ .idea/vcs.xml	(date 1587298386078)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(date 1587178132695)
++++ pom.xml	(date 1587178132695)
+@@ -0,0 +1,50 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++    <modules>
++        <module>eureka-server</module>
++        <module>eureka-client</module>
++    </modules>
++
++    <parent>
++        <groupId>org.springframework.boot</groupId>
++        <artifactId>spring-boot-starter-parent</artifactId>
++        <version>2.2.5.RELEASE</version>
++        <relativePath/> <!-- lookup parent from repository -->
++    </parent>
++
++    <groupId>com.mengchao</groupId>
++    <artifactId>springcloud-demos</artifactId>
++    <version>1.0-SNAPSHOT</version>
++    <packaging>pom</packaging>
++
++    <properties>
++        <java.version>1.8</java.version>
++        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
++    </properties>
++
++    <dependencyManagement>
++        <dependencies>
++            <dependency>
++                <groupId>org.springframework.cloud</groupId>
++                <artifactId>spring-cloud-dependencies</artifactId>
++                <version>${spring-cloud.version}</version>
++                <type>pom</type>
++                <scope>import</scope>
++            </dependency>
++        </dependencies>
++    </dependencyManagement>
++
++    <build>
++        <plugins>
++            <!-- 打包插件 -->
++            <plugin>
++                <groupId>org.springframework.boot</groupId>
++                <artifactId>spring-boot-maven-plugin</artifactId>
++            </plugin>
++        </plugins>
++    </build>
++
++</project>
+\ No newline at end of file
+Index: eureka-server/src/main/resources/application-node2.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- eureka-server/src/main/resources/application-node2.properties	(date 1587260544489)
++++ eureka-server/src/main/resources/application-node2.properties	(date 1587260544489)
+@@ -0,0 +1,11 @@
++#application-node1.properties
++#端口号
++server.port=8762
++#localhost或ip
++eureka.instance.hostname=node2
++#服务注册中心的配置内容，指定服务注册中心的位置
++eureka.client.service-url.default- zone=http://node1:8761/eureka,http://node2:8762/eureka,http://node3:8764/eureka
++#是否检索服务
++eureka.client.fetch-registry=true 
++#是否向服务注册中心注册自己
++eureka.client.register-with-eureka=true
+\ No newline at end of file
+Index: eureka-server/src/main/resources/application-node3.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- eureka-server/src/main/resources/application-node3.properties	(date 1587260523802)
++++ eureka-server/src/main/resources/application-node3.properties	(date 1587260523802)
+@@ -0,0 +1,12 @@
++#application-node3.properties
++# 端口号
++server.port=8764
++#localhost或ip
++eureka.instance.hostname=node3 
++#服务注册中心的配置内容，指定服务注册中心的位置
++eureka.client.service-url.default-
++zone=http://node1:8761/eureka,http://node2:8762/eureka,http://node3:8764/eureka 
++#是否检索服务
++eureka.client.fetch-registry=true 
++#是否向服务注册中心注册自己
++eureka.client.register-with-eureka=true
+\ No newline at end of file
+Index: eureka-server/src/main/java/com/mengchao/eurekaserver/EurekaServerApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- eureka-server/src/main/java/com/mengchao/eurekaserver/EurekaServerApplication.java	(date 1587112162453)
++++ eureka-server/src/main/java/com/mengchao/eurekaserver/EurekaServerApplication.java	(date 1587112162453)
+@@ -0,0 +1,20 @@
++package com.mengchao.eurekaserver;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
++
++/*
++ * @ClassName EurekaServerApplication
++ * @Author MengChao
++ * @Date 2020/4/17  16:28
++ **/
++@EnableEurekaServer
++@SpringBootApplication
++public class EurekaServerApplication {
++
++    public static void main(String[] args) {
++        SpringApplication.run(EurekaServerApplication.class,args);
++    }
++
++}
+Index: eureka-server/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- eureka-server/src/main/resources/application.properties	(date 1587264374592)
++++ eureka-server/src/main/resources/application.properties	(date 1587264374592)
+@@ -0,0 +1,13 @@
++#服务名称
++spring.application.name=eureka-server
++#端口号
++server.port=8761
++eureka.instance.hostname=localhost
++#服务注册中心的配置内容，指定服务注册中心的位置
++eureka.client.service-url.default-zone=http://${eureka.instance.hostname}/${server.port}/eureka/
++##是否检索服务
++eureka.client.fetch-registry=false
++#是否向服务注册中心注册自己
++eureka.client.register-with-eureka=true
++#禁用自我保护模式
++eureka.server.enable-self-preservation = true
+\ No newline at end of file
+Index: springcloud-demos.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springcloud-demos.iml	(date 1587111747617)
++++ springcloud-demos.iml	(date 1587111747617)
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4" />
+\ No newline at end of file
+Index: eureka-server/src/main/resources/application-default.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- eureka-server/src/main/resources/application-default.properties	(date 1587259500212)
++++ eureka-server/src/main/resources/application-default.properties	(date 1587259500212)
+@@ -0,0 +1,12 @@
++#application-default.properties保留原始配置
++# 服务名称
++spring.application.name=eureka-server 
++#端口号 server.port=8761
++#localhost或ip
++eureka.instance.hostname=localhost 
++#服务注册中心的配置内容，指定服务注册中心的位置
++eureka.client.service-url.default- zone=http://${eureka.instance.hostname}:${server.port}/eureka
++#是否检索服务
++eureka.client.fetch-registry=false 
++#是否向服务注册中心注册自己
++eureka.client.register-with-eureka=false
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/encodings.xml	(date 1587176815223)
++++ .idea/encodings.xml	(date 1587176815223)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/eureka-client" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/eureka-server" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file
+Index: eureka-server/src/main/resources/application-node1.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- eureka-server/src/main/resources/application-node1.properties	(date 1587260544850)
++++ eureka-server/src/main/resources/application-node1.properties	(date 1587260544850)
+@@ -0,0 +1,11 @@
++#application-node1.properties
++#端口号
++server.port=8761
++#localhost或ip
++eureka.instance.hostname=node1 
++#服务注册中心的配置内容，指定服务注册中心的位置
++eureka.client.service-url.default- zone=http://node1:8761/eureka,http://node2:8762/eureka,http://node3:8764/eureka 
++#是否检索服务
++eureka.client.fetch-registry=true 
++#是否向服务注册中心注册自己
++eureka.client.register-with-eureka=true
+\ No newline at end of file
